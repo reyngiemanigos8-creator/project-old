@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITTab – News</title>
+
+    <!-- Font -->747/
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================================
+           GLOBAL
+           ========================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: #0d1b2a;
+            color: #ffffff;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* ==========================================================
+           TOP NAVBAR
+           ========================================================== */
+        .top-nav {
+            width: 100%;
+            height: 70px;
+            background: #06121f;
+            padding: 0 30px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+
+            box-shadow: 0 4px 12px rgba(0,0,0,0.45);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .logo .it {
+            color: #F2B632;
+            font-weight: 800;
+        }
+
+        .logo .tab {
+            color: #ffffff;
+            font-weight: 800;
+        }
+
+        .hamburger {
+            background: none;
+            border: none;
+            font-size: 32px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* ==========================================================
+           HAMBURGER MENU PANEL
+           ========================================================== */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -280px;
+            width: 280px;
+            height: 100%;
+            background: #0c1a2a;
+            padding: 90px 30px;
+            transition: 0.3s ease;
+            z-index: 1000;
+            box-shadow: -4px 0 12px rgba(0,0,0,0.4);
+        }
+
+        .side-menu.open {
+            right: 0;
+        }
+
+        .side-menu a {
+            display: block;
+            color: #ffffff;
+            font-size: 18px;
+            margin: 18px 0;
+            letter-spacing: 1px;
+            transition: 0.2s;
+        }
+
+        .side-menu a:hover {
+            color: #F2B632;
+        }
+
+        /* ==========================================================
+           NEWS PAGE WRAPPER
+           ========================================================== */
+        .news-hero {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            padding-top: 90px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .news-bg {
+            position: absolute;
+            inset: 0;
+            background: url("img/School.jpg") center/cover no-repeat;
+            filter: brightness(0.32);
+            z-index: -1;
+        }
+
+        .news-container {
+            width: 100%;
+            max-width: 1300px;
+            padding: 20px 70px;
+        }
+
+        /* ==========================================================
+           NEWS TABS
+           ========================================================== */
+        .news-tabs {
+            width: 100%;
+            height: 50px;
+            background: rgba(16, 40, 64, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            border-radius: 10px;
+        }
+
+        .news-tabs .tab {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            letter-spacing: 1px;
+        }
+
+        .news-tabs .tab.active {
+            color: #F2B632;
+        }
+
+        /* ==========================================================
+           ANNOUNCEMENT CARD
+           ========================================================== */
+        .ann-card {
+            margin-top: 40px;
+            width: 75%;
+            min-height: 450px;
+            background: rgba(4, 15, 23, 0.8);
+            border-radius: 30px;
+            padding: 40px 50px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+        }
+
+        .ann-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .ann-title {
+            font-size: 50px;
+            font-weight: 800;
+        }
+
+        .ann-date {
+            font-size: 20px;
+            opacity: 0.8;
+        }
+
+        .ann-desc {
+            margin-top: 20px;
+            font-size: 16px;
+            max-width: 600px;
+        }
+
+        .ann-img-wrapper {
+            margin-top: 30px;
+        }
+
+        .ann-img-wrapper img {
+            width: 320px;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+        }
+
+        /* ==========================================================
+           EVENTS LIST
+           ========================================================== */
+        .event-card {
+            width: 75%;
+            min-height: 120px;
+            margin-top: 30px;
+            background: rgba(4, 15, 23, 0.85);
+            border-radius: 25px;
+            display: flex;
+            padding: 25px 30px;
+            align-items: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+
+        .event-date {
+            width: 120px;
+            height: 130px;
+            background: rgba(1,10,18,0.95);
+            border: 4px solid rgba(242,182,50,0.9);
+            border-radius: 20px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .ev-month {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .ev-day {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .event-body {
+            margin-left: 30px;
+        }
+
+        .event-title {
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .event-desc {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ======================= TOP NAVBAR ======================= -->
+    <header class="top-nav">
+        <div class="logo no-underline">
+            <span class="it">IT</span><span class="tab">Tab</span>
+        </div>
+
+        <button class="hamburger" id="hamburgerBtn">&#9776;</button>
+    </header>
+
+    <!-- ======================= SLIDING MENU ======================= -->
+    <div id="sideMenu" class="side-menu">
+        <a href="faculty.html">Faculty</a>
+        <a href="studentsorganization.html">Organizations</a>
+        <a href="news.html">News</a>
+        <a href="achievement.html">Achievements</a>
+        <a href="inquires.html">Inquiries</a>
+    </div>
+
+    <!-- ======================= MAIN NEWS SECTION ======================= -->
+    <section class="news-hero">
+        <div class="news-bg"></div>
+
+        <div class="news-container">
+
+            <!-- Internal tabs -->
+            <div class="news-tabs">
+                <button id="tabAnnouncements" class="tab active">ANNOUNCEMENTS</button>
+                <button id="tabEvents" class="tab">EVENTS</button>
+            </div>
+
+            <!-- ANNOUNCEMENTS VIEW -->
+            <div id="announcementsView">
+                <div class="ann-card">
+                    <div class="ann-head">
+                        <h1 class="ann-title">Finals are coming</h1>
+                        <p class="ann-date">00 / 00 / 00</p>
+                    </div>
+
+                    <p class="ann-desc">
+                        Hello CTUnians, ready naba ang tanan!
+                    </p>
+                    <p class="ann-desc">
+                        As we enter Final Examination Week in CTU-Tabuelan, we prepare ourselves to give our best. This is the moment to apply everything we have learned throughout the semester. With focus, patience, and confidence, we are ready to face each exam and finish the week strong.
+                    </p>
+
+                    <div class="ann-img-wrapper">
+                        <img src="img/announcement-poster.png" alt="poster">
+                    </div>
+                </div>
+            </div>
+
+            <!-- EVENTS VIEW -->
+            <div id="eventsView" class="hidden">
+
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="ev-month">DEC.</div>
+                        <div class="ev-day">11</div>
+                    </div>
+
+                    <div class="event-body">
+                        <h2 class="event-title">CHRISTMAS PARTY</h2>
+                        <p class="event-desc">Ready your gifts, ready your smiles, the 2025 CTU-TAB's Christmas Party is coming soon!</p>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="ev-month">DEC.</div>
+                        <div class="ev-day">01</div>
+                    </div>
+
+                    <div class="event-body">
+                        <h2 class="event-title">PERFORMANCE-TASK WEEK</h2>
+                        <p class="event-desc">Time to lock in Technologies. It's that time again, the time to prove yourselves.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ======================= JAVASCRIPT ======================= -->
+    <script>
+        /* TAB SWITCH */
+        const tabAnn = document.getElementById("tabAnnouncements");
+        const tabEvents = document.getElementById("tabEvents");
+        const announcementsView = document.getElementById("announcementsView");
+        const eventsView = document.getElementById("eventsView");
+
+        tabAnn.onclick = () => {
+            tabAnn.classList.add("active");
+            tabEvents.classList.remove("active");
+            announcementsView.classList.remove("hidden");
+            eventsView.classList.add("hidden");
+        };
+
+        tabEvents.onclick = () => {
+            tabEvents.classList.add("active");
+            tabAnn.classList.remove("active");
+            eventsView.classList.remove("hidden");
+            announcementsView.classList.add("hidden");
+        };
+
+        /* HAMBURGER MENU */
+        const menu = document.getElementById("sideMenu");
+        const burger = document.getElementById("hamburgerBtn");
+
+        burger.onclick = () => {
+            menu.classList.toggle("open");
+        };
+    </script>
+
+</body>
+</html>

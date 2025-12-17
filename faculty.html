@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Faculty Directory</title>
+
+<!-- Correct CSS path for GitHub -->
+<link rel="stylesheet" href="css/faculty.css">
+
+</head>
+<body>
+
+<!-- ========== OVERLAY ========== -->
+<div id="overlay"></div>
+
+<!-- ========== SIDE MENU ========== -->
+<nav id="sideMenu">
+    <button id="closeMenu">&times;</button>
+
+    <ul class="menu-list">
+        <li><a href="faculty.html">Faculty</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="achievement.html" class="active">Achievements</a></li>
+        <li><a href="inquiries.html">Inquiries</a></li>
+        <li><a href="admin.html">Admin</a></li>
+    </ul>
+</nav>
+
+<!-- ========== TOP NAV ========== -->
+<header class="top-nav">
+    <a href="index.html" class="logo">
+        <span class="it">IT</span><span class="tab">Tab</span>
+    </a>
+
+    <!-- FIXED BUTTON ID -->
+    <button class="hamburger" id="openMenu">&#9776;</button>
+</header>
+
+<!-- ===== MAIN CONTENT ===== -->
+
+<h1 id="faculty">BSIT Faculty</h1>
+
+<!-- SEARCH BAR -->
+<div class="search-box">
+    <input type="text" id="search" placeholder="Search name or specialization..." onkeyup="searchFaculty()">
+</div>
+
+<!-- CATEGORY: PROGRAM HEAD -->
+<h2 id="program-head">Program Head</h2>
+<div class="faculty-container">
+    <div class="card program-head" data-name="Mrs. Jae-Ann S. Buhia" data-spec="Curriculum Design" onclick="openModal('Jae-Ann')">
+        <img src="img/jae.jpg" alt="Faculty">
+        <h3>Ms. Jae-Ann S. Buhia</h3>
+        <p>Dean of BSIT</p>
+        <p><small>Master IT</small></p>
+        <button>Email</button>
+    </div>
+</div>
+
+<!-- CATEGORY: FULL-TIME -->
+<h2 id="full-time">Full-time Faculty</h2>
+<div class="faculty-container">
+    <div class="card full-time" data-name="Mr. Johnrel Paglinawan" data-spec="Mathematics" onclick="openModal('Johnrel')">
+        <img src="img/jp.jpg" alt="Faculty">
+        <h3>Mr. Johnrel Paglinawan</h3>
+        <p>Assistant Professor IV</p>
+        <p><small>Master IT</small></p>
+        <button>Email</button>
+    </div>
+</div>
+
+<!-- CATEGORY: PART-TIME -->
+<h2 id="part-time">Part-time Faculty</h2>
+<div class="faculty-container">
+
+    <div class="card part-time" data-name="Mr. Jimf Bocales" data-spec="Web Systems and Technology" onclick="openModal('Jimf')">
+        <img src="img/jimf.jpg" alt="Faculty">
+        <h3>Mr. Jimf Bocales</h3>
+        <p>BSIT Instructor</p>
+        <p><small>Master IT</small></p>
+        <button>Email</button>
+    </div>
+
+    <div class="card part-time" data-name="Mr. Leonardo Albit Jr." data-spec="Data Structures and Algorithms" onclick="openModal('Leonardo')">
+        <img src="img/albit.jpg" alt="Faculty">
+        <h3>Mr. Leonardo Albit Jr.</h3>
+        <p>BSIT Instructor</p>
+        <p><small>Junior Developer</small></p>
+        <button>Email</button>
+    </div>
+
+    <div class="card part-time" data-name="John Carl Angelo Estrella" data-spec="Programming 1" onclick="openModal('Carl')">
+        <img src="img/johncarl.jpg" alt="Faculty">
+        <h3>Mr. John Carl Angelo Estrella</h3>
+        <p>BSIT Instructor</p>
+        <p><small>IT Programming</small></p>
+        <button>Email</button>
+    </div>
+
+    <div class="card part-time" data-name="Ms. Alyssa Marie Paglinawan" data-spec="Programming" onclick="openModal('Alyssa')">
+        <img src="img/alyssa.jpg" alt="Faculty">
+        <h3>Mrs. Alyssa Marie Paglinawan</h3>
+        <p>BSIT Instructor</p>
+        <p><small>Master IT</small></p>
+        <button>Email</button>
+    </div>
+
+</div>
+
+<!-- ========== MODAL ========== -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+
+    <div id="Jae-Ann" class="profile">
+        <img src="img/jae.jpg">
+        <h2>Ms. Jae-Ann S. Buhia</h2>
+        <p><strong>Position:</strong>Program Head</p>
+        <p><strong>Specialization:</strong>Master IT</p>
+        <p><strong>Email:</strong>maria@school.edu</p>
+    </div>
+
+    <div id="Johnrel" class="profile">
+        <img src="img/jp.jpg">
+        <h2>Prof. Johnrel Paglinawan</h2>
+        <p><strong>Position:</strong>Assistant Professor IV</p>
+        <p><strong>Specialization:</strong>Master IT</p>
+        <p><strong>Email:</strong>juan@school.edu</p>
+    </div>
+
+    <div id="Jimf" class="profile">
+        <img src="img/jimf.jpg">
+        <h2>Mr. Jimf Bocales</h2>
+        <p><strong>Position:</strong>BSIT Instructor</p>
+        <p><strong>Specialization:</strong>Master IT</p>
+        <p><strong>Email:</strong>ana@school.edu</p>
+    </div>
+
+    <div id="Leonardo" class="profile">
+        <img src="img/albit.jpg">
+        <h2>Mr. Leonardo Albit Jr.</h2>
+        <p><strong>Position:</strong>BSIT Instructor</p>
+        <p><strong>Specialization:</strong>Junior Developer</p>
+        <p><strong>Email:</strong>leo@school.edu</p>
+    </div>
+
+    <div id="Carl" class="profile">
+        <img src="img/johncarl.jpg">
+        <h2>Mr. John Carl Estrella</h2>
+        <p><strong>Position:</strong>BSIT Instructor</p>
+        <p><strong>Specialization:</strong>IT Programming</p>
+        <p><strong>Email:</strong>ana@school.edu</p>
+    </div>
+
+    <div id="Alyssa" class="profile">
+        <img src="img/alyssa.jpg">
+        <h2>Mrs. Alyssa Marie Paglinawan</h2>
+        <p><strong>Position:</strong>BSIT Instructor</p>
+        <p><strong>Specialization:</strong>Master IT</p>
+        <p><strong>Email:</strong>ana@school.edu</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ========== JAVASCRIPT ========== -->
+<script>
+function searchFaculty() {
+    let input = document.getElementById("search").value.toLowerCase();
+    let cards = document.getElementsByClassName("card");
+
+    for (let i = 0; i < cards.length; i++) {
+        let name = cards[i].getAttribute("data-name").toLowerCase();
+        let spec = cards[i].getAttribute("data-spec").toLowerCase();
+
+        cards[i].style.display = (name.includes(input) || spec.includes(input)) ? "block" : "none";
+    }
+}
+
+function openModal(id) {
+    document.getElementById("modal").style.display = "block";
+
+    let profiles = document.getElementsByClassName("profile");
+    for (let p of profiles) p.style.display = "none";
+
+    document.getElementById(id).style.display = "block";
+}
+
+function closeModal() {
+    document.getElementById("modal").style.display = "none";
+}
+
+/* ==== FIXED HAMBURGER MENU JS ==== */
+document.getElementById("openMenu").onclick = function () {
+    document.getElementById("sideMenu").style.right = "0px";
+    document.getElementById("overlay").style.display = "block";
+};
+
+document.getElementById("closeMenu").onclick = closeSideMenu;
+document.getElementById("overlay").onclick = closeSideMenu;
+
+function closeSideMenu() {
+    document.getElementById("sideMenu").style.right = "-320px";
+    document.getElementById("overlay").style.display = "none";
+}
+</script>
+
+</body>
+</html>
